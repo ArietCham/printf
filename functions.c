@@ -7,7 +7,7 @@
  * @types: List of arguments
  * @buffer: Buffer array to handle print
  * @flags: Calculates active flags
- * 2width: width
+ * @width: width
  * @precision: precision specification
  * @size: size specifier
  * Return: Number of chars printed
@@ -63,6 +63,14 @@ for (i = width - length; i > 0; i--)
 write(1, " ", 1);
 return (width);
 }
+else
+{
+
+for (i = width - length; i > 0; i--)
+write(1, " ", 1);
+write(1, &str[0], length);
+return (width);
+}
 }
 
 return (write(1, str, length));
@@ -113,6 +121,8 @@ n = convert_size_number(n, size);
 
 if (n == 0)
 buffer[i--] = '0';
+
+buffer[BUFF_SIZE - 1] = '\0';
 num = (unsigned long int)n;
 
 if (n < 0)
@@ -171,7 +181,7 @@ if (sum || i == 31)
 {
 char z = '0' + a[i];
 
-write(1, @z, 1);
+write(1, &z, 1);
 count++;
 }
 }
