@@ -12,7 +12,7 @@
  * @size: size specifier
  * Return: Number of chars printed
  */
-int print_char(va_list types, char buffer[], 
+int print_char(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
 char c = va_arg(types, int);
@@ -30,7 +30,7 @@ return (handle_write_char(c, buffer, flags, width, precision, size));
  * @size: Size specifier
  * Return: Number of chars printed
  */
-int print_string(va_list types, char buffer[], 
+int print_string(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
 int length = 0, 1;
@@ -65,7 +65,6 @@ return (width);
 }
 else
 {
-
 for (i = width - length; i > 0; i--)
 write(1, " ", 1);
 write(1, &str[0], length);
@@ -86,7 +85,7 @@ return (write(1, str, length));
  * @size: size specifier
  * Return: number of chars printed
  */
-int print_percent(va_list types, char buffer[], 
+int print_percent(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
 UNUSED(types);
@@ -109,7 +108,7 @@ return (write(1, "%%", 1));
  * @size: size specifier
  * Return: number of chars printed
  */
-int print_int(va_list types, char buffer[], 
+int print_int(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
 int i = BUFF_SIZE - 2;
@@ -153,7 +152,7 @@ return (write_number(is_negative, i, buffer, flags, width, precision, size));
  * @size: size specifier
  * Return: numbers of char printed
  */
-int print_binary(va_list types, char buffer[], 
+int print_binary(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
 unsigned int n, m, i, sum;
